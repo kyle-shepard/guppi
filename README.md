@@ -1,4 +1,4 @@
-# GUPPI
+# G.U.P.P.I.
 
 ### General-purpose Unified Personal Productivity Intelligence
 

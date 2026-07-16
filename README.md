@@ -34,7 +34,9 @@ The first shippable slice is one thin vertical, spoken to locally at a desk — 
 
 ## Why rebuild — and what QRSPI is
 
-The old repo drifted the way projects do: a detailed architecture doc raced ahead of the code, nothing tied the design to actually-shipped slices, and it stalled. QRSPI exists to prevent exactly that. Five steps, each leaving **one artifact a human reads and owns** before moving on:
+The old repo drifted the way projects do: a detailed architecture doc raced ahead of the code, nothing tied the design to actually-shipped slices, and it stalled. QRSPI exists to prevent exactly that.
+
+QRSPI adapts a framework from **Dex Horthy**, built on a blunt fact about how LLMs actually perform: quality is highest in the early, uncluttered part of the context window and degrades as it fills up. So rather than one sprawling session, the work splits into five focused steps — each starting fresh, each leaving **one artifact a human reads and owns** before the next begins. That keeps every step inside the *better part of the context window*, and keeps the developer close to the work instead of rubber-stamping a wall of generated code.
 
 | Step | Produces | The human owns |
 |---|---|---|
@@ -43,6 +45,8 @@ The old repo drifted the way projects do: a detailed architecture doc raced ahea
 | **S — Spec / Design** | current state → desired state → decisions | the architecture |
 | **P — Plan** | small, shippable vertical slices | the slicing, before any code |
 | **I — Implement** | the code / PR | every line |
+
+Each piece of work is tracked as a **GitHub issue acting as an epic** — the Q/R/S/P artifacts accumulate on that issue as the work progresses, so it carries the full decision trail from first question to shipped code. Artifacts live on the issue, not as doc sprawl in the repo.
 
 The principle: **the AI does the volume, the human makes the decisions.** No step is outsourced end-to-end — each produces something a person validates before the next begins. This repo is where that plays out for a real project.
 

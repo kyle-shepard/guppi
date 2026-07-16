@@ -56,5 +56,12 @@ WixTools/
 *.temp
 .cache/
 
+# Local SQLite memory store
+*.db
+
+# Python
+__pycache__/
+.venv/
+
 # Claude Code session data
 .claude/

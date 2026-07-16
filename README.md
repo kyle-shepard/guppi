@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 > 🚧 **Status: Rebuilding from scratch.**
-> Formerly *PAL* (and *JARVIS* before that), this project went through three architectures and then sat idle for a few months. Rather than patch the drift, it's being rebuilt from the ground up — and built in public as a working demonstration of **QRSPI**, a disciplined AI-assisted development flow.
+> Formerly *JARVIS*, this project went through three architectures and then sat idle for a few months. Rather than patch the drift, it's being rebuilt from the ground up — and built in public as a working demonstration of **QRSPI**, a disciplined AI-assisted development flow.
 > The entire previous codebase is preserved, untouched, on the [`archive/legacy`](../../tree/archive/legacy) branch (tag `v1-archive`). Nothing was lost; `main` is a clean slate.
 
 > **On the name:** GUPPI is a nod to GUPPY, the loyal shipboard AI from Dennis E. Taylor's *Bobiverse* — a capable, unobtrusive aide that runs the ship and remembers everything so its human doesn't have to. That's the job. (The Bobiverse's own term for what happened to this repo over three rewrites, fittingly, is *replicative drift*.)
@@ -64,7 +64,7 @@ The stack is intentionally **not chosen yet** — that's a design (S) decision, 
 
 ## The old code
 
-Everything from the JARVIS → PAL lineage (Node/Express backend, React frontend, Rust voice module, self-evolving schema system) lives on [`archive/legacy`](../../tree/archive/legacy). Browse it for reference; `main` starts fresh.
+Everything from the earlier JARVIS-era codebase (Node/Express backend, React frontend, Rust voice module, self-evolving schema system) lives on [`archive/legacy`](../../tree/archive/legacy). Browse it for reference; `main` starts fresh.
 
 ## License
 

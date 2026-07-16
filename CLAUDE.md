@@ -1,6 +1,6 @@
 # GUPPI
 
-**G**eneral-purpose **U**nified **P**ersonal **P**roductivity **I**ntelligence — a voice-first personal assistant built around structured memory. Formerly *PAL* / *JARVIS*; being **rebuilt from scratch** via the QRSPI flow (see [README](README.md)). Name is a nod to GUPPY from the *Bobiverse*.
+**G**eneral-purpose **U**nified **P**ersonal **P**roductivity **I**ntelligence — a voice-first personal assistant built around structured memory. Formerly *JARVIS*; being **rebuilt from scratch** via the QRSPI flow (see [README](README.md)). Name is a nod to GUPPY from the *Bobiverse*.
 
 ## State
 

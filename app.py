@@ -8,11 +8,12 @@ import litellm
 import streamlit as st
 from dotenv import load_dotenv
 
+import agent
 import store
 
 load_dotenv()  # ponytail: standard local-dev secret loading — reads LANGSMITH_* from a .env file
 
-MODEL = "ollama/llama3.2"
+MODEL = agent.MODEL  # single source of truth for the model tag (agent owns the loop + model)
 
 # D6: LangSmith via LiteLLM's built-in callback — logs prompt/params, response, latency,
 # tokens, model name at the model-call level. No custom instrumentation.
@@ -45,8 +46,7 @@ if prompt := st.chat_input("Say something"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    resp = litellm.completion(model=MODEL, messages=st.session_state.messages)
-    reply = resp.choices[0].message.content
+    reply = agent.reply(st.session_state.messages)  # recall loop: may call the recall tool mid-turn
 
     st.session_state.messages.append({"role": "assistant", "content": reply})
     with st.chat_message("assistant"):

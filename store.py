@@ -43,21 +43,37 @@ def recent(limit=20, path=DB_PATH):
     return [dict(zip(("timestamp", "model", "user_message", "llm_reply"), r)) for r in rows]
 
 
+def search(query, limit=10, path=DB_PATH):
+    """Keyword recall over user_message/llm_reply — the recall tool's query path (slice 2)."""
+    like = f"%{query}%"
+    with sqlite3.connect(path) as conn:
+        rows = conn.execute(
+            "SELECT timestamp, model, user_message, llm_reply FROM exchanges "
+            "WHERE user_message LIKE ? OR llm_reply LIKE ? ORDER BY id DESC LIMIT ?",
+            (like, like, limit),
+        ).fetchall()
+    return [dict(zip(("timestamp", "model", "user_message", "llm_reply"), r)) for r in rows]
+
+
 def demo():
-    """Runnable check: insert a row and read it back, fields intact."""
+    """Runnable check: insert a row and read it back, fields intact; search hits and misses."""
     import os
     import tempfile
 
     path = os.path.join(tempfile.mkdtemp(), "demo.db")
     init(path)
-    add("ollama/llama3.2", "hello", "hi there", path=path)
+    add("ollama/llama3.2", "my dog's name is Biscuit", "nice to meet Biscuit", path=path)
     rows = recent(path=path)
     assert len(rows) == 1, f"expected 1 row, got {len(rows)}"
     r = rows[0]
     assert r["model"] == "ollama/llama3.2", r
-    assert r["user_message"] == "hello", r
-    assert r["llm_reply"] == "hi there", r
+    assert r["user_message"] == "my dog's name is Biscuit", r
+    assert r["llm_reply"] == "nice to meet Biscuit", r
     assert r["timestamp"], "timestamp missing"
+
+    hits = search("Biscuit", path=path)
+    assert len(hits) == 1 and hits[0]["user_message"] == r["user_message"], hits
+    assert search("nothing-matches-this", path=path) == [], "miss should return []"
     print("store.demo() OK:", r)
 
 

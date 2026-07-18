@@ -56,5 +56,15 @@ WixTools/
 *.temp
 .cache/
 
+# Local SQLite memory store
+*.db
+
+# Python
+__pycache__/
+.venv/
+
+# Secrets — never commit
+.env
+
 # Claude Code session data
 .claude/

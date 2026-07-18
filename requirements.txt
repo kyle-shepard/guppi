@@ -1,0 +1,5 @@
+streamlit
+# ponytail: pinned to a wheel version — newer litellm sdists need a Rust toolchain to
+# build metadata; the wheel skips that. Bump when a newer wheel is available.
+litellm==1.91.3
+langsmith

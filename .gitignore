@@ -63,5 +63,8 @@ WixTools/
 __pycache__/
 .venv/
 
+# Secrets — never commit
+.env
+
 # Claude Code session data
 .claude/
